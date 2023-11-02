@@ -1,5 +1,5 @@
-/*/ > /dev/null || true
-set -e
+/*/ 2> /dev/null
+set -ex
 deno_version='1.38.0'
 case $RUNNER_ARCH in
   X86) arch=ia32 ;;
