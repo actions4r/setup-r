@@ -1,4 +1,4 @@
-/*/ > /dev/null
+/*/ > /dev/null || true
 set -e
 deno_version='1.38.0'
 case $RUNNER_ARCH in
