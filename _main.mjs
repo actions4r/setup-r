@@ -1,9 +1,9 @@
 import { spawn } from "node:child_process";
 import { dirname, join } from "node:path";
 import { once } from "node:events";
-const base = dirname(process.argv[1]);
 const main = "main.ts"; // 👈 CHANGE ME!
-const subprocess = spawn(join(base, main), {
+const file = join(dirname(process.argv[1]), main);
+const subprocess = spawn(file, {
   shell: "bash",
   stdio: "inherit",
 });
