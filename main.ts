@@ -20,6 +20,7 @@ exec "$deno_install/bin/deno" run -A "$0" "$@"
 
 import { fileURLToPath } from "node:url";
 import * as core from "npm:@actions/core";
+import { issue as coreIssue } from "npm:@actions/core/lib/command.js";
 import * as github from "npm:@actions/github";
 import * as tc from "npm:@actions/tool-cache";
 
@@ -32,4 +33,4 @@ let found = tc.find("R", exactVersion);
 if (!found) {
 }
 
-core.issue("add-matcher", fileURLToPath(import.meta.resolve("./matcher.json")));
+coreIssue("add-matcher", fileURLToPath(import.meta.resolve("./matcher.json")));
