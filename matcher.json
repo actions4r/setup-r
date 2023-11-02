@@ -1,0 +1,40 @@
+{
+  "problemMatcher": [
+    {
+      "owner": "r",
+      "pattern": [
+        {
+          "regexp": "^(Error|Warning)(?: in (.*) )?: (.*)$",
+          "severity": 1,
+          "code": 2,
+          "message": 3
+        }
+      ]
+    },
+    {
+      "owner": "rcmdcheck",
+      "pattern": [
+        {
+          "regexp": "^(.*) [.][.][.] (ERROR|WARNING)$",
+          "severity": 2
+        },
+        {
+          "regexp": "^\\s*(.*)$",
+          "message": 1
+        }
+      ]
+    },
+    {
+      "owner": "testthat",
+      "pattern": [
+        {
+          "regexp": "^(.*):(\\d+): (\\w+): (\\w+)$",
+          "file": 1,
+          "line": 2,
+          "severity": 3,
+          "message": 4
+        }
+      ]
+    }
+  ]
+}
