@@ -11,6 +11,7 @@ deno_install="$RUNNER_TOOL_CACHE/deno/v1.38.0/$arch"
 if [ ! -d "$deno_install" ]; then
   curl -fsSL https://deno.land/x/install/install.sh | DENO_INSTALL="$deno_install" sh -s "$deno_version" &> /dev/null
 fi
+ls "$deno_install"
 exec "$deno_install/bin/deno" "$0" "$@"
 # */
 
