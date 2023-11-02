@@ -1,5 +1,5 @@
 /*/ 2> /dev/null
-set -ex
+set -e
 deno_version='1.38.0'
 case $RUNNER_ARCH in
   X86) arch=ia32 ;;
@@ -14,7 +14,6 @@ if [ ! -d "$deno_install" ]; then
     exit 1
   fi
 fi
-ls "$deno_install"
 exec "$deno_install/bin/deno" run -A "$0" "$@"
 # */
 
