@@ -9,7 +9,10 @@ case $RUNNER_ARCH in
 esac
 deno_install="$RUNNER_TOOL_CACHE/deno/v1.38.0/$arch"
 if [ ! -d "$deno_install" ]; then
-  curl -fsSL https://deno.land/x/install/install.sh | DENO_INSTALL="$deno_install" sh -s "$deno_version" &> /dev/null
+  if ! o=$(curl -fsSL https://deno.land/x/install/install.sh | DENO_INSTALL="$deno_install" sh -s "$deno_version" 2>&1); then
+    echo "$o" >&2
+    exit 1
+  fi
 fi
 ls "$deno_install"
 exec "$deno_install/bin/deno" "$0" "$@"
