@@ -7,15 +7,15 @@ case $RUNNER_ARCH in
   ARM) arch=arm ;;
   ARM64) arch=arm64 ;;
 esac
-deno_install="$RUNNER_TOOL_CACHE/deno/v1.38.0/$arch"
+deno_install="$RUNNER_TOOL_CACHE/deno/$version/$arch"
 if [ ! -d "$deno_install" ]; then
-  if ! o=$(curl -fsSL https://deno.land/x/install/install.sh | DENO_INSTALL="$deno_install" sh -s "$deno_version" 2>&1); then
+  if ! o=$(curl -fsSL https://deno.land/x/install/install.sh | DENO_INSTALL="$deno_install" sh -s "v$deno_version" 2>&1); then
     echo "$o" >&2
     exit 1
   fi
 fi
 ls "$deno_install"
-exec "$deno_install/bin/deno" "$0" "$@"
+exec "$deno_install/bin/deno" run -A "$0" "$@"
 # */
 
 import { fileURLToPath } from "node:url";
